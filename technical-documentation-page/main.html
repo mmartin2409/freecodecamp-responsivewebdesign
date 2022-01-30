@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Documentation Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <nav id="navbar">
+    <header>SQL Documentation</header>
+    <ul>
+      <li><a href="#SQL_Basics" class="nav-link">SQL Basics</a></li>
+      <li><a href="#SELECT_and_FROM" class="nav-link">SELECT and FROM</a></li>
+      <li><a href="#Link_Three" class="nav-link">Link Three</a></li>
+      <li><a href="#Link_Four" class="nav-link">Link Four</a></li>
+      <li><a href="#References" class="nav-link">References</a></li>
+    </ul>
+  </nav>
+  <main id="main-doc">
+    <section class="main-section" id="SQL_Basics">
+      <header>SQL Basics</header>
+      <article>
+        <p>Data is just information. Data for a particular entity or user can be
+          stored in
+          a container called a relational database. data.world doesn’t use
+          databases.
+          Instead, we use datasets. A dataset is a snapshot of all the
+          information in a
+          database at a given moment in time.
+        </p>
+        <p>
+          The data in a dataset is further segmented into structures called
+          tables. A
+          table contains information that goes together. For example, all of the
+          people in
+          an address book could go in a table called Contacts. In this table
+          there would
+          be places to put the names, addresses, cities, states, zip codes,
+          phone numbers,
+          etc., for all the people in the address book. The table is organized
+          into
+          columns and rows. A column has, e.g., all the city data or all the
+          name data for
+          every entry in the table, while a row is a single entry that has all
+          the
+          different data for one person.
+        </p>
+
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>ZIP</th>
+            <th>Phone</th>
+          </tr>
+          <tr>
+            <th>Nathaniel Hawthorne</th>
+            <th>27 Union St.</th>
+            <th>Salem</th>
+            <th>MA</th>
+            <th>01970</th>
+            <th>978-555-4244</th>
+          </tr>
+          <tr>
+            <th>Lizzie Borden</th>
+            <th>92 Second St.</th>
+            <th>Fall River</th>
+            <th>MA</th>
+            <th>02721</th>
+            <th>508-555-5282</th>
+          </tr>
+        </table>
+        <p>Some tables in a dataset might share data. For instance you might
+          keep a list of
+          Christmas cards written to and received from your friends. This table
+          would
+          probably have the same names in it that your Contacts table did and
+          you could
+          use these tables together. Other tables in your dataset might have
+          nothing to do
+          with any other tables. You might have a table for your Pokemon card
+          collection,
+          e.g., and have all your cards organized in it. Unless you shared your
+          cards with
+          your friends, there would probably be no reason to use your Contacts
+          table with
+          your Pokemon table.</p>
+
+        <p>
+          In addition to datasets, data.world also has a projects resource.
+          Projects can
+          contain multiple datasets and give you the ability to use them
+          together in new
+          and more powerful ways than a standard dataset would.
+        </p>
+
+        <p>
+          Now that you know where the data is stored you need to know how to get
+          it out.
+          By far the most common language used to retrieve data from a dataset
+          is SQL. If
+          you want to use it to get information from a computer you have to
+          phrase your
+          request in a specific way called a query. Queries are broken up into
+          smaller
+          pieces called clauses. Each clause contains one or more words called
+          keywords. A
+          clause is written in a specific order called its syntax. It isn’t
+          enough just to
+          use the right words in your query, you also have to use the correct
+          syntax for
+          your clauses so that the computer will be able to process the query.
+          For
+          example, when you want to get a list of all the names in your address
+          book you
+          can’t just type a sentence like:</p>
+
+        <pre><code>Get all the names out of my address book</code></pre>
+        <p>Instead, using the example of the table above, you have to use the
+          word SELECT
+          for get, the exact name of the column where the names are kept, and
+          FROM with
+          the exact name of the table that holds your contact list, giving you a
+          query
+          with a SELECT clause and a WHERE clause:</p>
+
+        <pre><code>SELECT Name FROM contact_list</code></pre>
+      </article>
+    </section>
+    <section class="main-section" id="SELECT_and_FROM">
+      <header>SELECT and FROM</header>
+      <article>
+        <p>An introduction to the <code>SELECT</code> and <code>FROM</code>
+          clauses and their related keywords</p>
+        <p>The first clause in any query is the SELECT clause. The SELECT clause
+          contains
+          either a list of the columns you want returned from the query
+          separated by a
+          comma, or the wildcard *. The second clause in the query is the FROM
+          clause. The
+          FROM clause indicates against which table to run the query.</p>
+
+        <p>
+          The wildcard * when used after SELECT means that all the columns in
+          the table
+          should be returned and they are presented in the order in which they
+          are found
+          in the original table.
+        </p>
+
+        <p>The query to see everything in the Intakes table would look like:</p>
+
+        <pre><code>SELECT *<br/>FROM austin_animal_center_intakes
+        </code></pre>
+        <p>And the first 3 rows of the result would look like this:</p>
+        <table>
+          <tr>
+            <th>animal_id</th>
+            <th>name</th>
+            <th>datetime</th>
+            <th>monthyear</th>
+            <th>found_location</th>
+          </tr>
+          <tr>
+            <th>A006100</th>
+            <th>Scamp</th>
+            <th>2017-12-07T14:07:00</th>
+            <th>2017-12</th>
+            <th>Colony Creek and Hunters Trace in Austin (TX)</th>
+          </tr>
+          <tr>
+            <th>A006101</th>
+            <th>Tyson</th>
+            <th>2017-12-13T17:13:00</th>
+            <th>2017-12</th>
+            <th>Travis (TX)</th>
+          </tr>
+        </table>
+        <div class="tip">
+          <p>"In the previous example the keywords <code>SELECT</code> and
+            <code>FROM</code> are both
+            capitalized. This
+            is a convention, not a requirement. The SQL parser is
+            case-insensitive so both
+            upper and lower cases work for keywords. The clauses are also on
+            different
+            lines–another convention. SQL has a lot of conventions. You,
+            however, don’t need
+            to worry about them as data.world autocompletes your keywords and
+            source names
+            for you, and auto-formats the entire query in a very readable,
+            industry-standard
+            format when you run it–an extremely handy feature as you’ll see next
+            when you go
+            to enter specific column names."
+          </p>
+        </div>
+      </article>
+    </section>
+    <section class="main-section" id="Link_Three">
+      <header>Link Three</header>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quod
+        ad, quas pariatur fugit minus cum voluptates, nisi sed provident numquam
+        consequatur tempora ipsum recusandae perferendis? Voluptas quae mollitia
+        laborum.
+        Quaerat, quos cum ullam quod nam vel at ducimus ut odit assumenda,
+        facilis sit! Similique aperiam eligendi quasi? Natus corporis est
+        laboriosam consequatur provident laborum ipsa eveniet, et error
+        recusandae!
+        Nam deserunt maxime ad, totam dolore, minima molestiae debitis magni
+        aliquid ut ipsa, commodi qui at? Eveniet similique iste aspernatur,
+        assumenda totam in aut, odio minus libero beatae obcaecati a?
+        Quaerat, possimus. Totam eligendi repellendus sit, libero similique
+        quibusdam aspernatur accusantium, doloremque accusamus aperiam quam
+        maxime corrupti laudantium, id illo possimus eaque. Assumenda non
+        accusamus nam impedit sapiente? Earum, commodi?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quod
+        ad, quas pariatur fugit minus cum voluptates, nisi sed provident numquam
+        consequatur tempora ipsum recusandae perferendis? Voluptas quae mollitia
+        laborum.
+        Quaerat, quos cum ullam quod nam vel at ducimus ut odit assumenda,
+        facilis sit! Similique aperiam eligendi quasi? Natus corporis est
+        laboriosam consequatur provident laborum ipsa eveniet, et error
+        recusandae!
+        Nam deserunt maxime ad, totam dolore, minima molestiae debitis magni
+        aliquid ut ipsa, commodi qui at? Eveniet similique iste aspernatur,
+        assumenda totam in aut, odio minus libero beatae obcaecati a?
+        Quaerat, possimus. Totam eligendi repellendus sit, libero similique
+        quibusdam aspernatur accusantium, doloremque accusamus aperiam quam
+        maxime corrupti laudantium, id illo possimus eaque. Assumenda non
+        accusamus nam impedit sapiente? Earum, commodi?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quod
+        ad, quas pariatur fugit minus cum voluptates, nisi sed provident numquam
+        consequatur tempora ipsum recusandae perferendis? Voluptas quae mollitia
+        laborum.
+        Quaerat, quos cum ullam quod nam vel at ducimus ut odit assumenda,
+        facilis sit! Similique aperiam eligendi quasi? Natus corporis est
+        laboriosam consequatur provident laborum ipsa eveniet, et error
+        recusandae!
+        Nam deserunt maxime ad, totam dolore, minima molestiae debitis magni
+        aliquid ut ipsa, commodi qui at? Eveniet similique iste aspernatur,
+        assumenda totam in aut, odio minus libero beatae obcaecati a?
+        Quaerat, possimus. Totam eligendi repellendus sit, libero similique
+        quibusdam aspernatur accusantium, doloremque accusamus aperiam quam
+        maxime corrupti laudantium, id illo possimus eaque. Assumenda non
+        accusamus nam impedit sapiente? Earum, commodi?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia iusto
+        vero non, earum atque totam rerum voluptatum sint recusandae
+        perspiciatis quasi deleniti inventore nulla, aliquam esse beatae
+        excepturi voluptates. Dolor!
+      <pre><code>SELECT *<br/>FROM this_table</code></pre>
+      Nostrum distinctio accusamus commodi odit cum dignissimos eveniet fugiat
+      neque porro velit quis animi dolorum dicta obcaecati ipsam dolor,
+      deserunt voluptates quos? Consequuntur debitis, nostrum alias dicta
+      temporibus exercitationem. Iste.</p>
+    </section>
+    <section class="main-section" id="Link_Four">
+      <header>Link Four</header>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quod
+        ad, quas pariatur fugit minus cum voluptates, nisi sed provident numquam
+        consequatur tempora ipsum recusandae perferendis? Voluptas quae mollitia
+        laborum.
+        Quaerat, quos cum ullam quod nam vel at ducimus ut odit assumenda,
+        facilis sit! Similique aperiam eligendi quasi? Natus corporis est
+        laboriosam consequatur provident laborum ipsa eveniet, et error
+        recusandae!
+        Nam deserunt maxime ad, totam dolore, minima molestiae debitis magni
+        aliquid ut ipsa, commodi qui at? Eveniet similique iste aspernatur,
+        assumenda totam in aut, odio minus libero beatae obcaecati a?
+        Quaerat, possimus. Totam eligendi repellendus sit, libero similique
+        quibusdam aspernatur accusantium, doloremque accusamus aperiam quam
+        maxime corrupti laudantium, id illo possimus eaque. Assumenda non
+        accusamus nam impedit sapiente? Earum, commodi?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quod
+        ad, quas pariatur fugit minus cum voluptates, nisi sed provident numquam
+        consequatur tempora ipsum recusandae perferendis? Voluptas quae mollitia
+        laborum.
+        Quaerat, quos cum ullam quod nam vel at ducimus ut odit assumenda,
+        facilis sit! Similique aperiam eligendi quasi? Natus corporis est
+        laboriosam consequatur provident laborum ipsa eveniet, et error
+        recusandae!
+        Nam deserunt maxime ad, totam dolore, minima molestiae debitis magni
+        aliquid ut ipsa, commodi qui at? Eveniet similique iste aspernatur,
+        assumenda totam in aut, odio minus libero beatae obcaecati a?
+        Quaerat, possimus. Totam eligendi repellendus sit, libero similique
+        quibusdam aspernatur accusantium, doloremque accusamus aperiam quam
+        maxime corrupti laudantium, id illo possimus eaque. Assumenda non
+        accusamus nam impedit sapiente? Earum, commodi?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quod
+        ad, quas pariatur fugit minus cum voluptates, nisi sed provident numquam
+        consequatur tempora ipsum recusandae perferendis? Voluptas quae mollitia
+        laborum.
+        Quaerat, quos cum ullam quod nam vel at ducimus ut odit assumenda,
+        facilis sit! Similique aperiam eligendi quasi? Natus corporis est
+        laboriosam consequatur provident laborum ipsa eveniet, et error
+        recusandae!
+        Nam deserunt maxime ad, totam dolore, minima molestiae debitis magni
+        aliquid ut ipsa, commodi qui at? Eveniet similique iste aspernatur,
+        assumenda totam in aut, odio minus libero beatae obcaecati a?
+        Quaerat, possimus. Totam eligendi repellendus sit, libero similique
+        quibusdam aspernatur accusantium, doloremque accusamus aperiam quam
+        maxime corrupti laudantium, id illo possimus eaque. Assumenda non
+        accusamus nam impedit sapiente? Earum, commodi?</p>
+
+      <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+        <li>Four</li>
+        <li>Five</li>
+      </ul>
+    </section>
+    <section class="main-section" id="References">
+      <header>References</header>
+      <article>
+        <ul>
+          <li>All the documentation from this page is taken from <a
+              href="https://docs.data.world/documentation/sql/concepts/basic/intro.html"
+              target="_blank">data.world</a>
+          </li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</body>
+
+</html>
